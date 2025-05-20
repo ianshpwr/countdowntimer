@@ -4,8 +4,12 @@ body {
   background-color: #f7f6f3;
   font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
   color: #3d3d3d;
+  height: 100%;
 }
-
+body {
+  display: block; /* Important if flex/grid caused restriction */
+  position: relative;
+}
 .App {
   display: flex;
   flex-direction: column;
@@ -117,3 +121,4 @@ h1 {
 .list{
 padding: 0;
 }
+

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc, getDocs, serverTimestamp } from 'firebase/firestore';
 import './App.css';
+import { Link } from 'react-router-dom';
 const firebaseConfig = {
   apiKey: "AIzaSyBq_LCQRv9dRokplXEGJ3pJn-7Sngp0jTE",
   authDomain: "countdown-c6938.firebaseapp.com",
@@ -62,14 +63,6 @@ function Messages() {
         />
         <button className='button' type="submit">Save</button>
       </form>
-
-
-      <ul className='list'>
-        {texts.map((textItem) => (
-          <div key={textItem.id}>{textItem.content}</div>
-        ))}
-      </ul>
-
     </div>
   );
 }
