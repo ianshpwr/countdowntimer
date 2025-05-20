@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import './App.css';
+import Messages from './Messages';
 function App() {
   const targetDate = new Date("2025-07-19")
 
@@ -32,6 +33,7 @@ return (
         <div>{timeleft.minutes} Minutes</div>
         <div>{timeleft.seconds} Seconds</div>
       </div>
+      <Messages />
     </div>
   );
 }
