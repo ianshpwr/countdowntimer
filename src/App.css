@@ -1,0 +1,32 @@
+body{
+background-color: white;
+font-family: "Comic Relief", system-ui;
+}
+.App{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.countdown{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.countdown div{
+  font-size: 1rem;
+  padding: 1vw;
+  background-color: #ecf0f3;
+  box-shadow: 12px 12px 16px 0 #b5bbc2, -8px -8px 12px 0 #f8fbff;
+  border-radius: 20px;
+}
+h1{
+  font-size: 1.87rem;
+  background-color: #ecf0f3;
+  box-shadow: 12px 12px 16px 0 #b5bbc2, -8px -8px 12px 0 #f8fbff;
+  border-radius: 20px;
+  padding:20px
+}

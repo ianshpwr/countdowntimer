@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
-
+import './App.css';
 function App() {
-  const targetDate = new Date("2025-07-17")
+  const targetDate = new Date("2025-07-19")
 
   function timeLeft(){
     const today = new Date();
@@ -25,12 +25,12 @@ function App() {
 
 return (
     <div className="App">
-      <h1>Countdown to </h1>
+      <h1>Countdown to 2nd Year</h1>
       <div className="countdown">
-        <div>{timeleft.days} days</div>
-        <div>{timeleft.hours} hours</div>
-        <div>{timeleft.minutes} minutes</div>
-        <div>{timeleft.seconds} seconds</div>
+        <div>{timeleft.days} Days</div>
+        <div>{timeleft.hours} Hours</div>
+        <div>{timeleft.minutes} Minutes</div>
+        <div>{timeleft.seconds} Seconds</div>
       </div>
     </div>
   );
