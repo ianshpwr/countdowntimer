@@ -33,7 +33,9 @@ return (
         <div>{timeleft.minutes} Minutes</div>
         <div>{timeleft.seconds} Seconds</div>
       </div>
+
     <Link to="/messages" className='mess'>Write your Message</Link>
+    <p>To Us, From Us — Messages for the Journey Ahead</p>
     </div>
   );
 }

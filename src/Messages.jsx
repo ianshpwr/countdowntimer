@@ -50,8 +50,8 @@ function Messages() {
 
   return (
     <div className='damn'>
-    <div>
-    <div>
+
+
       <form onSubmit={handleSubmit} className="form">
         <input
         className="inputt"
@@ -62,15 +62,14 @@ function Messages() {
         />
         <button className='button' type="submit">Save</button>
       </form>
-        </div>
-        <div>
+
+
       <ul className='list'>
         {texts.map((textItem) => (
           <div key={textItem.id}>{textItem.content}</div>
         ))}
       </ul>
-      </div>
-    </div>
+
     </div>
   );
 }
