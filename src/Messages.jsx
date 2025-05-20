@@ -1,7 +1,7 @@
-import {useState} from 'react';
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
-
+import { useState, useEffect } from 'react';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, addDoc, getDocs, serverTimestamp } from 'firebase/firestore';
+import './App.css';
 const firebaseConfig = {
   apiKey: "AIzaSyBq_LCQRv9dRokplXEGJ3pJn-7Sngp0jTE",
   authDomain: "countdown-c6938.firebaseapp.com",
@@ -16,28 +16,63 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+function Messages() {
+  const [text, setText] = useState("");
+  const [texts, setTexts] = useState([]);
 
+  const fetchTexts = async () => {
+    const querySnapshot = await getDocs(collection(db, "texts"));
+    const data = querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    setTexts(data);
+  };
 
-function Messages(){
-    const [text, setText] = useState("");
-async function handleSubmit(e){
+  useEffect(() => {
+    fetchTexts();
+  }, []);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    await addDoc(collection(db, "texts"), {
+    if (!text.trim()) return;
+    try {
+      await addDoc(collection(db, "texts"), {
         content: text,
-        createdAt: new Date()
+        createdAt: serverTimestamp()
       });
-      setText("")
+      setText("");
+      fetchTexts();
+    } catch (error) {
+      console.error("Error adding document: ", error);
     }
- return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Type something..."
-      />
-      <button type="submit">Save</button>
-    </form>
+  };
+
+  return (
+    <div className='damn'>
+    <div>
+    <div>
+      <form onSubmit={handleSubmit} className="form">
+        <input
+        className="inputt"
+          type="text"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="Type something..."
+        />
+        <button className='button' type="submit">Save</button>
+      </form>
+        </div>
+        <div>
+      <ul className='list'>
+        {texts.map((textItem) => (
+          <div key={textItem.id}>{textItem.content}</div>
+        ))}
+      </ul>
+      </div>
+    </div>
+    </div>
   );
 }
+
 export default Messages;
